@@ -1,0 +1,46 @@
+﻿<Window x:Class="LeekIDE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeekIDE"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+    <Window.Resources>
+        <MenuItem x:Key="undoItem" Command="Undo"/>
+        <MenuItem x:Key="redoItem" Command="Redo"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*" MinHeight="25" MaxHeight="35"/>
+            <RowDefinition Height="284*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="415*"/>
+                <ColumnDefinition Width="102*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontFamily="./Roboto/#Roboto" Content="LeekIDE" VerticalAlignment="Center" Margin="5,0,0,1" FontSize="20" Grid.ColumnSpan="2" Height="34"/>
+            <Button Content="Show snippet editor" MaxWidth="120" Click="ButtonBase_OnClick"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <xctk:IntegerUpDown Value="15" x:Name="Size"/>
+                <TextBlock FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center">
+                    Font size
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <DockPanel Grid.Row="1">
+            <Grid DockPanel.Dock="Left" Background="#FFDAD5D5">
+                <Label Content="foo" MinWidth="75" Background="#FF474747" Foreground="White"/>
+            </Grid>
+            <avalonEdit:TextEditor
+    Name="textEditor"
+    FontFamily="Consolas"
+    SyntaxHighlighting="LeekScript"
+    FontSize="{Binding Value, ElementName=Size}"
+    />
+        </DockPanel>
+    </Grid>
+</Window>
