@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="-818.404811909994,-171.362884521484,394.266666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=37 EndLineNumber=10 EndCharacterOffset=47)" UseManualLocation="True" />
+    <Node Id="@11" Category="CodeSchema_Method" Bounds="-857.977530924479,-386.148021289063,452.433333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(TextEditor, string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=9 StartCharacterOffset=37 EndLineNumber=9 EndCharacterOffset=47)" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="-392.138145243327,-233.478485107422,144.663333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CodeSnippetSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="CodeSnippetSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/CodeSnippetSeeker.cs&quot; StartLineNumber=12 StartCharacterOffset=17 EndLineNumber=12 EndCharacterOffset=34)" UseManualLocation="True" />
+    <Node Id="@4" Category="CodeSchema_Interface" Bounds="-676.53167561849,-265.147824014282,107.336666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ICodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="ICodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=8 StartCharacterOffset=21 EndLineNumber=8 EndCharacterOffset=32)" />
+    <Node Id="@5" Category="CodeSchema_Interface" Bounds="-692.531692301432,-321.147924014282,141.573333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="IGlobalCodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="IGlobalCodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=7 StartCharacterOffset=21 EndLineNumber=7 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="-950.958321533203,-227.362995556641,122.17,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KeywordSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="KeywordSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/KeywordSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=17 EndLineNumber=10 EndCharacterOffset=30)" UseManualLocation="True" />
+    <Node Id="@7" Category="CodeSchema_Class" Bounds="-507.764147135417,-321.148121289062,118.443333333333,26" CodeSchemaProperty_IsInternal="True" CommonLabel="VariableSeeker" Icon="Microsoft.VisualStudio.Class.Internal" Label="VariableSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/VariableSeeker.cs&quot; StartLineNumber=14 StartCharacterOffset=10 EndLineNumber=14 EndCharacterOffset=24)" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="@3" Target="@10" Bounds="-549.363884729198,-207.478485107422,166.464641001246,34.2993420533558" />
+    <Link Source="@3" Target="@4" Bounds="-560.243750914193,-245.60409807101,168.105605670866,17.5669784639971" />
+    <Link Source="@4" Target="@10" Category="Contains" Bounds="-622.642686086812,-239.147824014282,0.997811329064234,58.786235669598" />
+    <Link Source="@5" Target="@11" Category="Contains" Bounds="-628.387069570437,-351.253001698798,4.63887920886839,30.1050776845161" />
+    <Link Source="@6" Target="@10" Bounds="-830.080065463219,-201.896852576325,137.644158684561,28.6970784892313" />
+    <Link Source="@6" Target="@4" Bounds="-828.788321533203,-243.292134095197,143.345428723612,20.2849438427811" />
+    <Link Source="@7" Target="@11" Bounds="-586.635090668676,-357.138870296368,101.448877067139,35.9907490073055" />
+    <Link Source="@7" Target="@5" Bounds="-541.958358968105,-308.148053836582,34.1942118326882,3.89466310366515E-05" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Classe" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Interface" Label="Interface" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" NavigationActionLabel="Interfaces" />
+    <Category Id="CodeSchema_Member" Label="Membre" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Membres" />
+    <Category Id="CodeSchema_Method" Label="Méthode" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Méthodes" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contient" Description="Si la source de la liaison contient ou non l'objet cible" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contenu par" IsContainment="True" OutgoingActionLabel="Contient" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="Est abstrait" Description="L'indicateur qui spécifie que le membre est 'Abstract' ne fournit pas une implémentation complète" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="Est interne" Description="Indicateur qui spécifie que la méthode est 'Internal'" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Est public" Description="Indicateur qui spécifie que la portée est publique" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icône" Description="Icône" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Étiquette" Description="Étiquette affichable d'un objet pouvant être annoté" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Numéro de la ligne de début" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Member" Label="Membre" ValueType="System.Object" />
+    <Name Id="Name" Label="Nom" ValueType="System.String" />
+    <Name Id="Namespace" Label="Espace de noms" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Paramètre" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=LeekIDE.Autocompletion.Seekers" />
+    <Alias n="3" Id="(@1 @2 Type=CodeSnippetSeeker)" />
+    <Alias n="4" Id="(@1 @2 Type=ICodeSeeker)" />
+    <Alias n="5" Id="(@1 @2 Type=IGlobalCodeSeeker)" />
+    <Alias n="6" Id="(@1 @2 Type=KeywordSeeker)" />
+    <Alias n="7" Id="(@1 @2 Type=VariableSeeker)" />
+    <Alias n="8" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.6.1/mscorlib.dll" />
+    <Alias n="9" Uri="Assembly=$(VsSolutionUri)/packages/AvalonEdit.5.0.3/lib/Net40/ICSharpCode.AvalonEdit.dll" />
+    <Alias n="10" Id="(@1 @2 Type=ICodeSeeker Member=(Name=GetResults OverloadingParameters=[(@8 Namespace=System Type=String),(@9 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+    <Alias n="11" Id="(@1 @2 Type=IGlobalCodeSeeker Member=(Name=GetResults OverloadingParameters=[(@9 Namespace=ICSharpCode.AvalonEdit Type=TextEditor),(@8 Namespace=System Type=String),(@9 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Catégorie 1" ValueLabel="A la catégorie">
+      <Condition Expression="HasCategory('Category1')" />
+      <Setter Property="Background" Value="#FFE51400" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Interface" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF327DC4" />
+      <Setter Property="Foreground" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Commentaire" ValueLabel="Possède un commentaire">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPathUri" Value="file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/bin/Debug/LeekIDE.exe" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="VsSolutionUri" Value="file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE" />
+  </Paths>
+</DirectedGraph>

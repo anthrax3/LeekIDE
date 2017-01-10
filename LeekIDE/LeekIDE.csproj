@@ -76,6 +76,10 @@
       <HintPath>..\packages\AvalonEdit.5.0.3\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.2-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -105,10 +109,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SnippetEditor.xaml.cs">
+    <Compile Include="Autocompletion\CodeSnippet.cs" />
+    <Compile Include="Autocompletion\Data\CodeSnippetCompletion.cs" />
+    <Compile Include="Autocompletion\Data\KeywordCompletion.cs" />
+    <Compile Include="Autocompletion\Seekers\CodeSnippetSeeker.cs" />
+    <Compile Include="Autocompletion\Seekers\ICodeSeeker.cs" />
+    <Compile Include="Autocompletion\Seekers\IGlobalCodeSeeker.cs" />
+    <Compile Include="Autocompletion\Seekers\KeywordSeeker.cs" />
+    <Compile Include="Autocompletion\Seekers\VariableSeeker.cs" />
+    <Compile Include="Utilities\Extracter.cs" />
+    <Compile Include="Views\SnippetEditor.xaml.cs">
       <DependentUpon>SnippetEditor.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Autocompletion\Data\VariableCompletion.cs" />
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -116,11 +130,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SnippetEditor.xaml">
+    <Page Include="Views\SnippetEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,14 +153,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="LeekScript.xshd">
+    <SplashScreen Include="SPLASHNEW.png" />
+    <EmbeddedResource Include="Syntax\LeekScript.xshd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Graph1.dgml" />
+    <None Include="Graphs\Seekers.dgml" />
     <None Include="LeekIDE_CléTemporaire.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -155,10 +170,10 @@
     </None>
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\keyword.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\snippet.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="leek3_front_green.ico" />
     <Content Include="Roboto\Roboto-Black.ttf">
@@ -197,7 +212,7 @@
     <Content Include="Roboto\Roboto-ThinItalic.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="SYntax.xsd">
+    <None Include="Syntax\SYntax.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -216,6 +231,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

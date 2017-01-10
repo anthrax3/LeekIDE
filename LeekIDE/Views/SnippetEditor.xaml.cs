@@ -2,26 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using LeekIDE.Autocompletion;
 using Newtonsoft.Json;
-using Formatting = Newtonsoft.Json.Formatting;
 
-namespace LeekIDE
+namespace LeekIDE.Views
 {
     /// <summary>
     /// Logique d'interaction pour SnippetEditor.xaml
@@ -33,7 +25,7 @@ namespace LeekIDE
             InitializeComponent();
             this.Closed += SnippetEditor_Closed;
             DataContext = this;
-            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LeekIDE.LeekScript.xshd"))
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LeekIDE.Syntax.LeekScript.xshd"))
             {
                 using (XmlTextReader reader = new XmlTextReader(s))
                 {
@@ -47,12 +39,10 @@ namespace LeekIDE
 
         private void SnippetEditor_Closed(object sender, EventArgs e)
         {
-            using (var memory = new MemoryStream())
-            {
+            
                 var result = JsonConvert.SerializeObject(CodeSnippets);
                 Properties.Settings.Default.json = result;
                 Properties.Settings.Default.Save();
-            }
         }
 
         private void TextEditor_TextChanged(object sender, EventArgs e)
@@ -97,5 +87,11 @@ namespace LeekIDE
             CodeSnippets.Remove(bye);
             View.SelectionChanged += Selector_OnSelected;
         }
+
+        
+    }
+    public class Test : TextBox
+    {
+
     }
 }
