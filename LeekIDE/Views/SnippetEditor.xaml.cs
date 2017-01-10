@@ -57,7 +57,7 @@ namespace LeekIDE.Views
         private CompletionWindow comp;
         private void TextArea_TextEntered(object sender, TextCompositionEventArgs e)
         {
-            MainWindow.WhenTextEntered(textEditor, ref comp, Xshd,e);
+            Events.WhenTextEntered(textEditor, ref comp, Xshd,e);
         }
 
         public XshdSyntaxDefinition Xshd { get; set; }

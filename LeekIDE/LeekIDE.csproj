@@ -118,6 +118,7 @@
     <Compile Include="Autocompletion\Seekers\KeywordSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\VariableSeeker.cs" />
     <Compile Include="Utilities\Extracter.cs" />
+    <Compile Include="Autocompletion\Events.cs" />
     <Compile Include="Views\SnippetEditor.xaml.cs">
       <DependentUpon>SnippetEditor.xaml</DependentUpon>
     </Compile>
