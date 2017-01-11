@@ -14,24 +14,25 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35*" MinHeight="25" MaxHeight="35"/>
-            <RowDefinition Height="284*"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="30*" MinHeight="25" MaxHeight="35"/>
+            <RowDefinition Height="269*"/>
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="415*"/>
-                <ColumnDefinition Width="102*"/>
-            </Grid.ColumnDefinitions>
-            <Label FontFamily="./Roboto/#Roboto" Content="LeekIDE" VerticalAlignment="Center" Margin="5,0,0,1" FontSize="20" Grid.ColumnSpan="2" Height="34"/>
-            <Button Content="Show snippet editor" MaxWidth="120" Click="ButtonBase_OnClick"/>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <xctk:IntegerUpDown Value="15" x:Name="Size"/>
-                <TextBlock FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center">
-                    Font size
-                </TextBlock>
-            </StackPanel>
+        <Menu BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="0,0,0,1">
+            <MenuItem Header="Tools">
+                <MenuItem Header="Snippet editor" HorizontalAlignment="Left" Click="SnippetTriggered"/>
+                <Separator/>
+                <MenuItem Header="Settings" Click="SettingsTriggered"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Changelog" Click="ChangeLogTriggered"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Margin="0,0,0,1">
+            <Label FontFamily="./Roboto/#Roboto" Content="LeekIDE" VerticalAlignment="Center" FontSize="20" Height="34" HorizontalAlignment="Center"/>
+            <Border BorderBrush="Black" Background="Black" VerticalAlignment="Bottom" Height="1"/>
         </Grid>
-        <DockPanel Grid.Row="1">
+        <DockPanel Grid.Row="2">
             <Grid DockPanel.Dock="Left" Background="#FFDAD5D5">
                 <Label Content="foo" MinWidth="75" Background="#FF474747" Foreground="White"/>
             </Grid>

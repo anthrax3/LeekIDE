@@ -18,6 +18,7 @@ using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using LeekIDE.Autocompletion;
 using LeekIDE.Autocompletion.Data;
 using LeekIDE.Autocompletion.Seekers;
+using LeekIDE.Properties;
 using Newtonsoft.Json;
 
 namespace LeekIDE.Views
@@ -29,13 +30,15 @@ namespace LeekIDE.Views
     {
         public MainWindow()
         {
+            Closed += MainWindow_Closed;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; // Un
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
-            Properties.Settings.Default.Upgrade();
+
             SnippetEditor.CodeSnippets =
                 JsonSerializer.CreateDefault()
                     .Deserialize<ObservableCollection<CodeSnippet>>(
                         new JsonTextReader(new StringReader(Properties.Settings.Default.json)));
+            
             InitializeComponent();
             using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LeekIDE.Syntax.LeekScript.xshd"))
             {
@@ -55,6 +58,28 @@ namespace LeekIDE.Views
                                                       Resources["redoItem"]
                                                   }
                                               };
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Settings.Default.Save();
+        }
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+            SettingsWindow.FontChanged += async (sender, i) =>
+            {
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    textEditor.FontSize = i;
+                });
+            };
+            if (!Settings.Default.UpgradeNeeded) return;
+            Settings.Default.Upgrade();
+            Settings.Default.UpgradeNeeded = false;
+            Settings.Default.Save();
+            new ChangeLog().ShowDialog();
         }
 
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
@@ -96,15 +121,20 @@ Stack Trace:
 
         private XshdSyntaxDefinition Xshd { get; set; }
         
-        private void Code_OnTextChanged(object sender, TextChangedEventArgs e)
+   
+        private void SnippetTriggered(object sender, RoutedEventArgs e)
         {
-
+            new SnippetEditor().ShowDialog();
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void SettingsTriggered(object sender, RoutedEventArgs e)
         {
-            var window = new SnippetEditor();
-            window.ShowDialog();
+            new SettingsWindow().ShowDialog();
+        }
+
+        private void ChangeLogTriggered(object sender, RoutedEventArgs e)
+        {
+            new ChangeLog(true).ShowDialog();
         }
     }
 }

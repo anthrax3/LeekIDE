@@ -64,11 +64,11 @@ namespace LeekIDE.Views
         private CodeSnippet Current { get; set; } = null;
         private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
-            DeleteButton.IsEnabled = true;
             var item = View.SelectedItem as CodeSnippet;
+            DeleteButton.IsEnabled = item != null;            
             Current = item;
-            textEditor.Text = item.Code;
-            textEditor.IsEnabled = true;
+            textEditor.Text = item?.Code;
+            textEditor.IsEnabled = item != null;
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -80,6 +80,7 @@ namespace LeekIDE.Views
         {
             View.SelectionChanged -= Selector_OnSelected;
             var bye = View.SelectedItem as CodeSnippet;
+            if (bye == null) return;
             var resoult =
                 MessageBox.Show($"Are you SURE you want to delete this POOR snippet ({bye.ShortenedCalling}) ?",
                                 "Deletion confirmation for noobs", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -89,9 +90,5 @@ namespace LeekIDE.Views
         }
 
         
-    }
-    public class Test : TextBox
-    {
-
     }
 }
