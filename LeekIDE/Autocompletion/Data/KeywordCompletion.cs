@@ -27,10 +27,7 @@ namespace LeekIDE.Autocompletion.Data
         public string Text { get; private set; }
 
         // Use this property if you want to show a fancy UIElement in the list.
-        public object Content
-        {
-            get { return this.Text; }
-        }
+        public object Content => Text;
 
         public object Description => $"{Text} keyword";
 

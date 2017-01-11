@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeekIDE.Views"
         mc:Ignorable="d"
-        Title="ChangeLog" Height="267" Width="394"
+        Title="Changelog" Height="267" Width="394"
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,6 +26,22 @@
                         <Setter Property="FontSize" Value="22"/>
                     </Style>
                 </FlowDocument.Resources>
+                <Paragraph>
+                    <Run Style="{StaticResource TitleRun}">
+                        Version 1.3.2.1 :
+                    </Run>
+                    <LineBreak/>
+                    - Bug fixes
+                </Paragraph>
+                <Paragraph>
+                    <Run Style="{StaticResource TitleRun}">Version 1.3.2 :</Run>
+                    <LineBreak/>
+                    - Better autocompletion performance
+                    <LineBreak/>
+                    - Finally added window titles
+                    <LineBreak/>
+                    - Layout fixes
+                </Paragraph>
                 <Paragraph>
                     <Run Style="{StaticResource TitleRun}">Version 1.3.1 :</Run>
                     <LineBreak/>

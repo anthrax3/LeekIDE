@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Windows.Documents;
 using System.Windows.Input;
 using ICSharpCode.AvalonEdit;
@@ -14,9 +15,9 @@ namespace LeekIDE.Autocompletion
 {
     internal static class Events
     {
+        private static bool InsertString { get; set; } = true;
         public static void WhenTextEntered(TextEditor edit, ref CompletionWindow complete, XshdSyntaxDefinition syntax, TextCompositionEventArgs e)
         {
-
             complete = new CompletionWindow(edit.TextArea);
             IList<ICompletionData> data = complete.CompletionList.CompletionData;
             List<char> wordsChar = new List<char>();
@@ -44,6 +45,7 @@ namespace LeekIDE.Autocompletion
                     current++;
                 }
             }
+            var didBefore = InsertString;
             switch (e.Text)
             {
                 case "{":
@@ -55,6 +57,12 @@ namespace LeekIDE.Autocompletion
                     edit.CaretOffset--;
                     break;
                 case "\"":
+                    InsertString = false;
+                    if (!didBefore)
+                    {
+                        InsertString = true;
+                        break;
+                    }
                     edit.TextArea.PerformTextInput("\"");
                     edit.CaretOffset--;
                     break;

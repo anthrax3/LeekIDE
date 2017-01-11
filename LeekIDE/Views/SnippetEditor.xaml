@@ -8,7 +8,7 @@
         xmlns:autocompletion="clr-namespace:LeekIDE.Autocompletion"
         xmlns:views="clr-namespace:LeekIDE.Views"
         mc:Ignorable="d"
-        Title="SnippetEditor" Height="302" Width="499" d:DataContext="{d:DesignInstance views:SnippetEditor}">
+        Title="Snippet editor" Height="302" Width="499" d:DataContext="{d:DesignInstance views:SnippetEditor}">
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Left" Orientation="Vertical">

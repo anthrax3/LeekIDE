@@ -1,37 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="@12" Category="CodeSchema_Method" Bounds="-817.709805808725,-134.281517793863,394.266666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=37 EndLineNumber=10 EndCharacterOffset=47)" UseManualLocation="True" />
-    <Node Id="@13" Category="CodeSchema_Method" Bounds="-1259.12602491688,-171.705656656555,317.633333333333,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="ExtractFromString" Icon="Microsoft.VisualStudio.Method.Public" Label="ExtractFromString(string, string, string) : List&lt;string&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Utilities/Extracter.cs&quot; StartLineNumber=6 StartCharacterOffset=35 EndLineNumber=6 EndCharacterOffset=52)" UseManualLocation="True" />
-    <Node Id="@14" Category="CodeSchema_Method" Bounds="-815.575308898719,-319.221840377419,452.433333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(TextEditor, string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=9 StartCharacterOffset=37 EndLineNumber=9 EndCharacterOffset=47)" UseManualLocation="True" />
-    <Node Id="@3" Category="CodeSchema_Class" Bounds="-603.710974050994,-246.281517793864,144.663333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CodeSnippetSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="CodeSnippetSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/CodeSnippetSeeker.cs&quot; StartLineNumber=12 StartCharacterOffset=17 EndLineNumber=12 EndCharacterOffset=34)" UseManualLocation="True" />
-    <Node Id="@4" Category="CodeSchema_Class" Bounds="-1143.80788567226,-227.707444539734,86.9833333333333,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Extracter" Icon="Microsoft.VisualStudio.Class.Public" Label="Extracter" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Utilities/Extracter.cs&quot; StartLineNumber=4 StartCharacterOffset=24 EndLineNumber=4 EndCharacterOffset=33)" UseManualLocation="True" />
-    <Node Id="@5" Category="CodeSchema_Interface" Bounds="-665.890315458662,-190.281517793864,107.336666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ICodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="ICodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=8 StartCharacterOffset=21 EndLineNumber=8 EndCharacterOffset=32)" />
-    <Node Id="@6" Category="CodeSchema_Interface" Bounds="-719.48690062269,-375.221840377419,141.573333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="IGlobalCodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="IGlobalCodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=7 StartCharacterOffset=21 EndLineNumber=7 EndCharacterOffset=38)" UseManualLocation="True" />
-    <Node Id="@7" Category="CodeSchema_Class" Bounds="-755.881074050994,-246.281517793864,122.17,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KeywordSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="KeywordSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/KeywordSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=17 EndLineNumber=10 EndCharacterOffset=30)" UseManualLocation="True" />
-    <Node Id="@8" Category="CodeSchema_Class" Bounds="-655.174299956044,-431.221840377419,118.443333333333,26" CodeSchemaProperty_IsInternal="True" CommonLabel="VariableSeeker" Icon="Microsoft.VisualStudio.Class.Internal" Label="VariableSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/VariableSeeker.cs&quot; StartLineNumber=14 StartCharacterOffset=10 EndLineNumber=14 EndCharacterOffset=24)" UseManualLocation="True" />
-    <Node Id="Dependencies" Bounds="-833.080623523914,-190.281517793864,114.771105165371,25.0037439927697" Group="Collapsed" UseManualLocation="True" />
+    <Node Id="@10" Category="CodeSchema_Class" Bounds="-445.879930826823,-313.838477414382,118.443333333333,26" CodeSchemaProperty_IsInternal="True" CommonLabel="VariableSeeker" Icon="Microsoft.VisualStudio.Class.Internal" Label="VariableSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/VariableSeeker.cs&quot; StartLineNumber=14 StartCharacterOffset=10 EndLineNumber=14 EndCharacterOffset=24)" UseManualLocation="True" />
+    <Node Id="@14" Category="CodeSchema_Method" Bounds="-830.439653523763,-89.8380774143822,394.266666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=37 EndLineNumber=10 EndCharacterOffset=47)" UseManualLocation="True" />
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="-1072.26712986801,-80.1430480753397,317.633333333333,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="ExtractFromString" Icon="Microsoft.VisualStudio.Method.Public" Label="ExtractFromString(string, string, string) : List&lt;string&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Utilities/Extracter.cs&quot; StartLineNumber=6 StartCharacterOffset=35 EndLineNumber=6 EndCharacterOffset=52)" UseManualLocation="True" />
+    <Node Id="@16" Category="CodeSchema_Method" Bounds="-1010.05200195313,-378.271579085671,430.25,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(string, string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=37 EndLineNumber=10 EndCharacterOffset=47)" UseManualLocation="True" />
+    <Node Id="@17" Category="CodeSchema_Method" Bounds="-771.321952311198,-257.838377414382,452.433333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GetResults" Icon="Microsoft.VisualStudio.Method.Public" Label="GetResults(TextEditor, string, [XshdRuleSet]) : IEnumerable&lt;ICompletionData&gt;" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=9 StartCharacterOffset=37 EndLineNumber=9 EndCharacterOffset=47)" UseManualLocation="True" />
+    <Node Id="@18" Category="CodeSchema_Method" Bounds="-973.883006591797,-322.271479085671,178.54,26" CodeSchemaProperty_IsPublic="True" CommonLabel="VariableIsDetected" Icon="Microsoft.VisualStudio.Method.Public" Label="VariableIsDetected() : void" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDEUnitTests/CodeSeekersUnitTests.cs&quot; StartLineNumber=10 StartCharacterOffset=20 EndLineNumber=10 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="@2" Category="CodeSchema_Class" Bounds="-1221.77300476074,-326.549499511719,156.89,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CodeSeekersUnitTests" Icon="Microsoft.VisualStudio.Class.Public" Label="CodeSeekersUnitTests" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDEUnitTests/CodeSeekersUnitTests.cs&quot; StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=37)" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="-616.42942972819,-201.838277414382,144.663333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CodeSnippetSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="CodeSnippetSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/CodeSnippetSeeker.cs&quot; StartLineNumber=12 StartCharacterOffset=17 EndLineNumber=12 EndCharacterOffset=34)" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="-956.942129868013,-136.14304807534,86.9833333333336,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Extracter" Icon="Microsoft.VisualStudio.Class.Public" Label="Extracter" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Utilities/Extracter.cs&quot; StartLineNumber=4 StartCharacterOffset=24 EndLineNumber=4 EndCharacterOffset=33)" UseManualLocation="True" />
+    <Node Id="@7" Category="CodeSchema_Interface" Bounds="-678.540525716146,-145.838177414382,107.336666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ICodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="ICodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/ICodeSeeker.cs&quot; StartLineNumber=8 StartCharacterOffset=21 EndLineNumber=8 EndCharacterOffset=32)" />
+    <Node Id="@8" Category="CodeSchema_Interface" Bounds="-675.227493082682,-313.838477414382,141.573333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="IGlobalCodeSeeker" Icon="Microsoft.VisualStudio.Interface.Public" Label="IGlobalCodeSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/IGlobalCodeSeeker.cs&quot; StartLineNumber=7 StartCharacterOffset=21 EndLineNumber=7 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="-768.599526367188,-201.838277414382,122.17,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KeywordSeeker" Icon="Microsoft.VisualStudio.Class.Public" Label="KeywordSeeker" SourceLocation="(Assembly=&quot;file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/Autocompletion/Seekers/KeywordSeeker.cs&quot; StartLineNumber=10 StartCharacterOffset=17 EndLineNumber=10 EndCharacterOffset=30)" UseManualLocation="True" />
+    <Node Id="Dependencies" Bounds="-845.80695554171,-145.838177414382,114.763333333333,25" Group="Collapsed" UseManualLocation="True" />
     <Node Id="GlobalIsThatThe" Category="Comment" Bounds="-729.969658308762,-555.421842018678,197.766666666667,89.8" Label="Global is that the code seeker&#xD;&#xA;needs the entire TextEditor to&#xD;&#xA;work, for example, VariableSeeker&#xD;&#xA;needs the entire editor to seek&#xD;&#xA;variables" UseManualLocation="True" />
-    <Node Id="Remarks" Bounds="-811.674738173616,-439.221840377419,84.7766666666666,25" Group="Collapsed" UseManualLocation="True" />
-    <Node Id="UsesExtractFromString" Category="Comment" Bounds="-927.797840717661,-246.241517793864,141.916666666667,25.96" Label="Uses ExtractFromString" UseManualLocation="True" />
+    <Node Id="Remarks" Bounds="-549.801979691394,-368.838577414382,84.7766666666666,25" Group="Collapsed" UseManualLocation="True" />
+    <Node Id="TheTestUnitUsesThisFunction" Category="Comment" Bounds="-1115.89324147486,-434.231679085671,181.626666666667,25.96" Label="The test unit uses this function" UseManualLocation="True" />
   </Nodes>
   <Links>
-    <Link Source="@3" Target="@12" Bounds="-583.845031738281,-220.281829833984,49.665771484375,82.2694549560547" />
-    <Link Source="@3" Target="@5" Bounds="-586.057181640694,-220.281829715204,35.9101842159665,24.8751283153038" />
-    <Link Source="@4" Target="@13" Category="Contains" Bounds="-1100.30932617188,-201.705932617188,0,20.9973907470703" />
-    <Link Source="@5" Target="@12" Category="Contains" Bounds="-617.309558700155,-164.281829715204,3.14758063415252,21.0985113429774" />
-    <Link Source="@6" Target="@14" Category="Contains" Bounds="-634.924507305816,-349.221840377419,25.2445517876971,23.8230027041886" />
-    <Link Source="@7" Target="@12" Bounds="-691.519470214844,-220.281829833984,34.2603149414063,81.1233978271484" />
-    <Link Source="@7" Target="@5" Bounds="-675.627728972346,-220.281829715204,36.7875126595516,24.9484924963525" />
-    <Link Source="@7" Target="Dependencies" Bounds="-750.051946846322,-220.281829715204,36.3064856738966,24.9084910098199" />
-    <Link Source="@8" Target="@14" Bounds="-584.808776855469,-405.221832275391,12.695068359375,77.3170471191406" />
-    <Link Source="@8" Target="@6" Bounds="-630.284385375091,-405.221840377419,22.0867733595279,23.4486363834867" />
-    <Link Source="Dependencies" Target="@13" Category="Contains" />
-    <Link Source="Dependencies" Target="@4" Category="Contains" />
-    <Link Source="GlobalIsThatThe" Target="@6" Bounds="-642.880178336191,-465.621835327148,8.06286967066308,97.0309213251808" />
-    <Link Source="GlobalIsThatThe" Target="@8" Bounds="-620.813561180708,-465.621835327148,9.43232291332845,41.2267023691274" />
+    <Link Source="@10" Target="@17" Bounds="-499.837399523402,-287.838477414382,76.3968567727276,27.0010226691469" />
+    <Link Source="@10" Target="@8" Bounds="-524.654159749349,-300.838477414382,78.7742289225263,0" />
+    <Link Source="@18" Target="@16" Bounds="-863.793078407691,-347.504873139634,40.4121116957501,25.2333940539631" />
+    <Link Source="@2" Target="@18" Category="Contains" Bounds="-1064.88300292969,-312.252362112843,82.00122650721,1.3559418402217" />
+    <Link Source="@5" Target="@14" Bounds="-596.541381835938,-175.838272094727,49.655517578125,82.2730484008789" />
+    <Link Source="@5" Target="@7" Bounds="-598.724691029357,-175.838277414382,35.8757546453438,24.8723001152199" />
+    <Link Source="@6" Target="@15" Category="Contains" Bounds="-913.450439453125,-110.143051147461,0,21" />
+    <Link Source="@7" Target="@14" Category="Contains" Bounds="-630.008035349893,-119.838177414382,3.17792393659579,21.1004696989571" />
+    <Link Source="@8" Target="@16" Category="Contains" Bounds="-747.969106634518,-349.387785096878,105.095860384007,35.5493146378938" />
+    <Link Source="@8" Target="@17" Category="Contains" Bounds="-590.666528846995,-287.838470458984,25.2416788845259,23.8227629288957" />
+    <Link Source="@9" Target="@14" Bounds="-704.238952636719,-175.838272094727,34.25048828125,81.1234741210938" />
+    <Link Source="@9" Target="@7" Bounds="-688.32973309366,-175.838277414382,36.8221735091896,24.9514419464706" />
+    <Link Source="@9" Target="Dependencies" Bounds="-762.780406088802,-175.838277414382,36.3138433720925,24.9091947235053" />
+    <Link Source="Dependencies" Target="@15" Category="Contains" />
+    <Link Source="Dependencies" Target="@6" Category="Contains" />
+    <Link Source="GlobalIsThatThe" Target="@10" Bounds="-620.813561180708,-465.621835327148,9.43232291332845,41.2267023691274" />
+    <Link Source="GlobalIsThatThe" Target="@8" Bounds="-642.880178336191,-465.621835327148,8.06286967066308,97.0309213251808" />
     <Link Source="Remarks" Target="GlobalIsThatThe" Category="Contains" />
-    <Link Source="UsesExtractFromString" Target="Dependencies" Bounds="-837.856454610584,-220.281829715204,36.4466793140069,24.920204903911" />
+    <Link Source="TheTestUnitUsesThisFunction" Target="@16" Bounds="-971.714791719764,-408.271679085671,114.595411741277,27.8730478660636" />
+    <Link Source="TheTestUnitUsesThisFunction" Target="@2" Bounds="-1122.40133032556,-408.271679085671,83.0704545952476,75.661844989005" />
   </Links>
   <Categories>
     <Category Id="CodeSchema_Class" Label="Classe" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
@@ -78,20 +85,24 @@
     <Name Id="Type" Label="Type" ValueType="System.Object" />
   </QualifiedNames>
   <IdentifierAliases>
-    <Alias n="1" Uri="Assembly=$(e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPathUri)" />
-    <Alias n="2" Id="Namespace=LeekIDE.Autocompletion.Seekers" />
-    <Alias n="3" Id="(@1 @2 Type=CodeSnippetSeeker)" />
-    <Alias n="4" Id="(@1 Namespace=LeekIDE.Utilities Type=Extracter)" />
-    <Alias n="5" Id="(@1 @2 Type=ICodeSeeker)" />
-    <Alias n="6" Id="(@1 @2 Type=IGlobalCodeSeeker)" />
-    <Alias n="7" Id="(@1 @2 Type=KeywordSeeker)" />
-    <Alias n="8" Id="(@1 @2 Type=VariableSeeker)" />
-    <Alias n="9" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.6.1/mscorlib.dll" />
-    <Alias n="10" Id="(@9 Namespace=System Type=String)" />
-    <Alias n="11" Uri="Assembly=$(VsSolutionUri)/packages/AvalonEdit.5.0.3/lib/Net40/ICSharpCode.AvalonEdit.dll" />
-    <Alias n="12" Id="(@1 @2 Type=ICodeSeeker Member=(Name=GetResults OverloadingParameters=[@10,(@11 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
-    <Alias n="13" Id="(@1 Namespace=LeekIDE.Utilities Type=Extracter Member=(Name=ExtractFromString OverloadingParameters=[@10,@10,@10]))" />
-    <Alias n="14" Id="(@1 @2 Type=IGlobalCodeSeeker Member=(Name=GetResults OverloadingParameters=[(@11 Namespace=ICSharpCode.AvalonEdit Type=TextEditor),@10,(@11 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+    <Alias n="1" Uri="Assembly=$(a4cd4135-8b21-4e32-9f8b-60b296890911.OutputPathUri)" />
+    <Alias n="2" Id="(@1 Namespace=LeekIDEUnitTests Type=CodeSeekersUnitTests)" />
+    <Alias n="3" Uri="Assembly=$(e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPathUri)" />
+    <Alias n="4" Id="Namespace=LeekIDE.Autocompletion.Seekers" />
+    <Alias n="5" Id="(@3 @4 Type=CodeSnippetSeeker)" />
+    <Alias n="6" Id="(@3 Namespace=LeekIDE.Utilities Type=Extracter)" />
+    <Alias n="7" Id="(@3 @4 Type=ICodeSeeker)" />
+    <Alias n="8" Id="(@3 @4 Type=IGlobalCodeSeeker)" />
+    <Alias n="9" Id="(@3 @4 Type=KeywordSeeker)" />
+    <Alias n="10" Id="(@3 @4 Type=VariableSeeker)" />
+    <Alias n="11" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.6.1/mscorlib.dll" />
+    <Alias n="12" Id="(@11 Namespace=System Type=String)" />
+    <Alias n="13" Uri="Assembly=$(VsSolutionUri)/packages/AvalonEdit.5.0.3/lib/Net40/ICSharpCode.AvalonEdit.dll" />
+    <Alias n="14" Id="(@3 @4 Type=ICodeSeeker Member=(Name=GetResults OverloadingParameters=[@12,(@13 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+    <Alias n="15" Id="(@3 Namespace=LeekIDE.Utilities Type=Extracter Member=(Name=ExtractFromString OverloadingParameters=[@12,@12,@12]))" />
+    <Alias n="16" Id="(@3 @4 Type=IGlobalCodeSeeker Member=(Name=GetResults OverloadingParameters=[@12,@12,(@13 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+    <Alias n="17" Id="(@3 @4 Type=IGlobalCodeSeeker Member=(Name=GetResults OverloadingParameters=[(@13 Namespace=ICSharpCode.AvalonEdit Type=TextEditor),@12,(@13 Namespace=ICSharpCode.AvalonEdit.Highlighting.Xshd Type=XshdRuleSet)]))" />
+    <Alias n="18" Id="(@1 Namespace=LeekIDEUnitTests Type=CodeSeekersUnitTests Member=VariableIsDetected)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Interface" ValueLabel="True">
@@ -113,8 +124,12 @@
     </Style>
   </Styles>
   <Paths>
+    <Path Id="a4cd4135-8b21-4e32-9f8b-60b296890911.OutputPathUri" Value="file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDEUnitTests/bin/Debug/LeekIDEUnitTests.dll" />
+    <Path Id="e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPath" Value="C:\Users\jeuxj\documents\visual studio 2015\Projects\LeekIDE\LeekIDE\bin\Debug\LeekIDE.exe" />
     <Path Id="e1dac49c-1cb9-4d6f-9524-d9f9a8ee40e2.OutputPathUri" Value="file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE/LeekIDE/bin/Debug/LeekIDE.exe" />
+    <Path Id="FxReferenceAssemblies" Value="C:\Program Files\Reference Assemblies\Microsoft\Framework" />
     <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="VsSolution" Value="C:\Users\jeuxj\documents\visual studio 2015\Projects\LeekIDE" />
     <Path Id="VsSolutionUri" Value="file:///C:/Users/jeuxj/documents/visual studio 2015/Projects/LeekIDE" />
   </Paths>
 </DirectedGraph>

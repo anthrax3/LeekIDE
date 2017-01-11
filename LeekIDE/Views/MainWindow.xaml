@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeekIDE"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
-        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+        Title="LeekIDE" Height="350" Width="525"
+        MinHeight="250" MinWidth="200"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit">
     <Window.Resources>
         <MenuItem x:Key="undoItem" Command="Undo"/>
         <MenuItem x:Key="redoItem" Command="Redo"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" MaxHeight="22" MinHeight="20"/>
             <RowDefinition Height="30*" MinHeight="25" MaxHeight="35"/>
             <RowDefinition Height="269*"/>
         </Grid.RowDefinitions>
