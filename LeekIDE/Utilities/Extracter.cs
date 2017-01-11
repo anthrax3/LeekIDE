@@ -24,7 +24,7 @@ namespace LeekIDE.Utilities
                     }
                     catch
                     {
-                        // ignored
+                        break;
                     }
                 }
                 else

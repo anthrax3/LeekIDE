@@ -27,6 +27,13 @@
                     </Style>
                 </FlowDocument.Resources>
                 <Paragraph>
+                    <Run Style="{StaticResource TitleRun}">Version 1.3.1 :</Run>
+                    <LineBreak/>
+                    - Not respoding bug fix
+                    <LineBreak/>
+                    - Added test units (backend stuff)
+                </Paragraph>
+                <Paragraph>
                     <Run Style="{StaticResource TitleRun}">
                         Version 1.3 :
                     </Run>

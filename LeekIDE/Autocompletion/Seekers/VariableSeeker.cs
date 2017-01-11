@@ -12,12 +12,34 @@ using LeekIDE.Utilities;
 
 namespace LeekIDE.Autocompletion.Seekers
 {
-    class VariableSeeker : IGlobalCodeSeeker
+    public class VariableSeeker : IGlobalCodeSeeker
     {
         public IEnumerable<ICompletionData> GetResults(TextEditor editor,string word,XshdRuleSet ruleSet = null)
         {
             var data = new List<ICompletionData>();
             foreach (var str in Extracter.ExtractFromString(editor.Text, "var", ";"))
+            {
+                var trueString = "";
+                if (str.IndexOf("=", StringComparison.Ordinal) != -1)
+                {
+                    trueString = str.Substring(0, str.IndexOf("=", StringComparison.Ordinal)).Trim();
+                }
+                else
+                {
+                    trueString = str.Trim();
+                }
+
+                if (trueString.StartsWith(word))
+                    data.Add(new VariableCompletion(trueString));
+            }
+            return data;
+        }
+
+        public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null)
+        {
+
+            var data = new List<ICompletionData>();
+            foreach (var str in Extracter.ExtractFromString(code, "var", ";"))
             {
                 var trueString = "";
                 if (str.IndexOf("=", StringComparison.Ordinal) != -1)

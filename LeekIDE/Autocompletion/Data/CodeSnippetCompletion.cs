@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Media.Imaging;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
@@ -12,16 +13,32 @@ namespace LeekIDE.Autocompletion.Data
         {
             this.Text = shortened;
             EntireCode = code;
-            Image = CurrentBitmap;
+            try
+            {
+                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/keyword.png"));
+                Image = CurrentBitmap;
+            }
+            catch (UriFormatException)
+            {
+                Debug.WriteLine("no image");
+            }
         }
 
         public CodeSnippetCompletion(CodeSnippet snippet)
         {
             Text = snippet.ShortenedCalling;
-            Image = CurrentBitmap;
+            try
+            {
+                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/keyword.png"));
+                Image = CurrentBitmap;
+            }
+            catch (UriFormatException)
+            {
+                Debug.WriteLine("no image");
+            }
             EntireCode = snippet.Code;
         }
-        private BitmapImage CurrentBitmap { get; set; } = new BitmapImage(new Uri("pack://application:,,,/Resources/snippet.png"));
+        private BitmapImage CurrentBitmap { get; set; }
         public System.Windows.Media.ImageSource Image { get; }
         public string Text { get; private set; }
 

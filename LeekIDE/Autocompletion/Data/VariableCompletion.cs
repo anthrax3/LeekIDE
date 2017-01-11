@@ -12,7 +12,7 @@ namespace LeekIDE.Autocompletion.Data
         {
             this.Text = text;
         }
-        private BitmapImage CurrentBitmap { get; set; } = new BitmapImage(new Uri("pack://application:,,,/Resources/snippet.png"));
+        private BitmapImage CurrentBitmap { get; set; }
         public System.Windows.Media.ImageSource Image { get; }
         public string Text { get; private set; }
 

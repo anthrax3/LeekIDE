@@ -28,9 +28,9 @@
                 <MenuItem Header="Changelog" Click="ChangeLogTriggered"/>
             </MenuItem>
         </Menu>
-        <Grid Grid.Row="1" Margin="0,0,0,1">
+        <Grid Grid.Row="1">
             <Label FontFamily="./Roboto/#Roboto" Content="LeekIDE" VerticalAlignment="Center" FontSize="20" Height="34" HorizontalAlignment="Center"/>
-            <Border BorderBrush="Black" Background="Black" VerticalAlignment="Bottom" Height="1"/>
+            <Border Background="WhiteSmoke" VerticalAlignment="Bottom" Height="1"/>
         </Grid>
         <DockPanel Grid.Row="2">
             <Grid DockPanel.Dock="Left" Background="#FFDAD5D5">
