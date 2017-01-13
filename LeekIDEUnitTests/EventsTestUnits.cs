@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICSharpCode.AvalonEdit;
+using LeekIDE.Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeekIDEUnitTests
@@ -14,7 +15,7 @@ namespace LeekIDEUnitTests
         [TestMethod]
         public void IsParenthesisAdded()
         {
-            var myEditor = new TextEditor();
+            var myEditor = new LeekBox();
             LeekIDE.Autocompletion.Syntaxic.Symbols.AutoCompleteBrackets(myEditor, '(');
             Assert.AreEqual(myEditor.Text,")");
         }
@@ -22,22 +23,23 @@ namespace LeekIDEUnitTests
         public void IsCurlyBracketAdded()
         {
             // this tests if the curly bracket is added :)
-            var myEditor = new TextEditor();
+            var myEditor = new LeekBox();
             LeekIDE.Autocompletion.Syntaxic.Symbols.AutoCompleteBrackets(myEditor, '{');
-            Assert.AreEqual(myEditor.Text, "}");
+            Assert.IsTrue(myEditor.Text.EndsWith("}"));
         }
         [TestMethod]
         public void IsQuoteAdded()
         {
             // this tests if quote is added WITHOUT looping
-            var myEditor = new TextEditor();
-            LeekIDE.Autocompletion.Syntaxic.Symbols.AutoCompleteBrackets(myEditor, '"');
+            var myEditor = new LeekBox();
+            // LeekIDE.Autocompletion.Syntaxic.Symbols.AutoCompleteBrackets(myEditor, '"');
+            myEditor.TextArea.PerformTextInput("\"");
             Task.Run(async () =>
             {
                 await Task.Delay(1500);
                 Assert.Fail("timeout :'(");
             });
-            Assert.AreEqual(myEditor.Text, "\"");
+            Assert.AreEqual(myEditor.Text, "\"\"");
         }
     }
 }

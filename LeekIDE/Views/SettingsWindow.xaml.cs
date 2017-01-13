@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using JetBrains.Annotations;
+using LeekIDE.Controls;
 using LeekIDE.Properties;
 
 namespace LeekIDE.Views
@@ -40,8 +41,9 @@ namespace LeekIDE.Views
         {
             if (Settings.Default.FontSize != Context.FontSize)
             {
-                FontChanged.Invoke(this,Context.FontSize);
+                // FontChanged.Invoke(this,Context.FontSize);
                 Settings.Default.FontSize = Context.FontSize;
+                LeekBox.GlobalFontsize = Context.FontSize;
             }
             Settings.Default.Save();
             Close();

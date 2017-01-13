@@ -13,7 +13,7 @@ namespace LeekIDE.Autocompletion.Data
             this.Text = text;
         }
         private BitmapImage CurrentBitmap { get; set; }
-        public System.Windows.Media.ImageSource Image { get; }
+        public System.Windows.Media.ImageSource Image => new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/variable.png"));
         public string Text { get; private set; }
 
         // Use this property if you want to show a fancy UIElement in the list.

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -31,11 +32,30 @@ namespace LeekIDE.Utilities
             //    else
             //        exit = true;
             //}
-            var regex = new Regex($"(?<={startString}).*?(?={endString})",RegexOptions.Singleline).Matches(text);
+            var regex = new Regex($"(?<={startString}).*?(?={endString})", RegexOptions.Singleline).Matches(text);
             foreach (Match match in regex)
             {
                 yield return match.Value;
             }
+        }
+
+        public static int GetBracketLevel(string text, int offset)
+        {
+            if (offset < 0 || offset >= text.Length)
+                throw new ArgumentException(nameof(offset));
+            int count = 0;
+            for (; offset <= text.Length; offset++)
+            {
+                if (text[offset] == '{')
+                {
+                    count++;
+                }
+                else if (text[offset] == '}' && offset > 0)
+                {
+                    count--;
+                }
+            }
+            return count;
         }
     }
 }

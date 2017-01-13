@@ -39,25 +39,7 @@ namespace LeekIDE.Views
                     .Deserialize<ObservableCollection<CodeSnippet>>(
                         new JsonTextReader(new StringReader(Properties.Settings.Default.json)));
             
-            InitializeComponent();
-            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LeekIDE.Syntax.LeekScript.xshd"))
-            {
-                using (XmlTextReader reader = new XmlTextReader(s))
-                {
-                    Xshd = HighlightingLoader.LoadXshd(reader);
-                    textEditor.SyntaxHighlighting = HighlightingLoader.Load(Xshd, HighlightingManager.Instance);
-                }
-            }
-            textEditor.TextArea.TextEntered += TextArea_TextEntered;
-            textEditor.TextArea.TextEntering += TextArea_TextEntering;
-            textEditor.TextArea.ContextMenu = new ContextMenu
-                                              {
-                                                  Items =
-                                                  {
-                                                      Resources["undoItem"],
-                                                      Resources["redoItem"]
-                                                  }
-                                              };
+            InitializeComponent();                       
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
@@ -72,7 +54,7 @@ namespace LeekIDE.Views
             {
                 await Dispatcher.InvokeAsync(() =>
                 {
-                    textEditor.FontSize = i;
+                    boxie.FontSize = i;
                 });
             };
             if (!Settings.Default.UpgradeNeeded) return;
@@ -98,27 +80,8 @@ Stack Trace:
 {((Exception) e.ExceptionObject).StackTrace}","OH NO ;(",MessageBoxButton.OK,MessageBoxImage.Error);
         }
 
-        private void TextArea_TextEntering(object sender, TextCompositionEventArgs e)
-        {
-
-            if (e.Text.Length > 0 && _completionWindow != null)
-            {
-                if (!char.IsLetterOrDigit(e.Text[0]) && _completionWindow.CompletionList.CompletionData.Any())
-                {
-                    // Whenever a non-letter is typed while the completion window is open,
-                    // insert the currently selected element.
-                    if (!(_completionWindow.CompletionList.SelectedItem is CodeSnippetCompletion))
-                        _completionWindow.CompletionList.RequestInsertion(e);
-                }
-            }
-        }
+       
         
-        CompletionWindow _completionWindow;
-        public void TextArea_TextEntered(object sender, TextCompositionEventArgs e)
-        {
-            Events.WhenTextEntered(textEditor, ref _completionWindow, Xshd, e);
-        }
-
         private XshdSyntaxDefinition Xshd { get; set; }
         
    

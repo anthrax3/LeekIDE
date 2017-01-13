@@ -14,12 +14,12 @@ namespace LeekIDE.Autocompletion.Data
             this.Text = text;
             try
             {
-                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/keyword.png"));
+                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/keyword.png"));
                 Image = CurrentBitmap;
             }
-            catch (UriFormatException)
+            catch (Exception)
             {
-                Debug.WriteLine("no image");
+                Debug.WriteLine("WARNING : no image");
             }
         }
         private BitmapImage CurrentBitmap { get; set; }

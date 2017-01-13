@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="LeekIDE" Height="350" Width="525"
         MinHeight="250" MinWidth="200"
-        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit">
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:custom="clr-namespace:LeekIDE.Controls">
     <Window.Resources>
         <MenuItem x:Key="undoItem" Command="Undo"/>
         <MenuItem x:Key="redoItem" Command="Redo"/>
@@ -36,12 +37,7 @@
             <Grid DockPanel.Dock="Left" Background="#FFDAD5D5">
                 <Label Content="foo" MinWidth="75" Background="#FF474747" Foreground="White"/>
             </Grid>
-            <avalonEdit:TextEditor
-    Name="textEditor"
-    FontFamily="Consolas"
-    SyntaxHighlighting="LeekScript"
-    FontSize="{Binding Value, ElementName=Size}"
-    />
+            <custom:LeekBox x:Name="boxie"/>
         </DockPanel>
     </Grid>
 </Window>

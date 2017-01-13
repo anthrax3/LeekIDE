@@ -15,7 +15,7 @@ namespace LeekIDE.Autocompletion.Data
             EntireCode = code;
             try
             {
-                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/keyword.png"));
+                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/snippet.png"));
                 Image = CurrentBitmap;
             }
             catch (UriFormatException)
@@ -29,10 +29,10 @@ namespace LeekIDE.Autocompletion.Data
             Text = snippet.ShortenedCalling;
             try
             {
-                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/keyword.png"));
+                CurrentBitmap = new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/snippet.png"));
                 Image = CurrentBitmap;
             }
-            catch (UriFormatException)
+            catch (Exception)
             {
                 Debug.WriteLine("no image");
             }

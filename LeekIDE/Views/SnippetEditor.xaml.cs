@@ -25,21 +25,11 @@ namespace LeekIDE.Views
             InitializeComponent();
             this.Closed += SnippetEditor_Closed;
             DataContext = this;
-            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LeekIDE.Syntax.LeekScript.xshd"))
-            {
-                using (XmlTextReader reader = new XmlTextReader(s))
-                {
-                    Xshd = HighlightingLoader.LoadXshd(reader);
-                    textEditor.SyntaxHighlighting = HighlightingLoader.Load(Xshd, HighlightingManager.Instance);
-                }
-            }
-            textEditor.TextArea.TextEntered += TextArea_TextEntered;
             textEditor.TextChanged += TextEditor_TextChanged;
         }
 
         private void SnippetEditor_Closed(object sender, EventArgs e)
-        {
-            
+        {            
                 var result = JsonConvert.SerializeObject(CodeSnippets);
                 Properties.Settings.Default.json = result;
                 Properties.Settings.Default.Save();
@@ -54,13 +44,6 @@ namespace LeekIDE.Views
         }
 
         public static ObservableCollection<CodeSnippet> CodeSnippets { get; set; } = new ObservableCollection<CodeSnippet>();
-        private CompletionWindow comp;
-        private void TextArea_TextEntered(object sender, TextCompositionEventArgs e)
-        {
-            Events.WhenTextEntered(textEditor, ref comp, Xshd,e);
-        }
-
-        public XshdSyntaxDefinition Xshd { get; set; }
         private CodeSnippet Current { get; set; } = null;
         private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
