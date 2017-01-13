@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.3.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -118,6 +118,7 @@
     <Compile Include="Autocompletion\Seekers\IGlobalCodeSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\KeywordSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\VariableSeeker.cs" />
+    <Compile Include="Autocompletion\Syntaxic\Bracket.cs" />
     <Compile Include="Utilities\Extracter.cs" />
     <Compile Include="Autocompletion\Events.cs" />
     <Compile Include="Views\ChangeLog.xaml.cs">

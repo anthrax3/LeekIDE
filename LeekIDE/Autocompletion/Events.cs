@@ -25,7 +25,6 @@ namespace LeekIDE.Autocompletion
                                                            LogicalDirection.Backward, CaretPositioningMode.WordStart);
 
             var end = 0;
-            Debug.WriteLine($"ok so : the start is {start:x8} and da max value is {Int32.MaxValue:x8}");
             if (start != -1)
             {
                 end = edit.CaretOffset;
@@ -45,37 +44,22 @@ namespace LeekIDE.Autocompletion
                     current++;
                 }
             }
-            var didBefore = InsertString;
-            switch (e.Text)
+            if (InsertString)
             {
-                case "{":
-                    edit.TextArea.PerformTextInput("}");
-                    edit.CaretOffset--;
-                    break;
-                case "(":
-                    edit.TextArea.PerformTextInput(")");
-                    edit.CaretOffset--;
-                    break;
-                case "\"":
-                    InsertString = false;
-                    if (!didBefore)
-                    {
-                        InsertString = true;
-                        break;
-                    }
-                    edit.TextArea.PerformTextInput("\"");
-                    edit.CaretOffset--;
-                    break;
-                default:
-                    break;
+                InsertString = false;
+                Autocompletion.Syntaxic.Symbols.AutoCompleteBrackets(edit, e.Text[0]);
+            }
+            else
+            {
+                InsertString = true;
             }
             string s = new string(wordsChar.ToArray());
             var syntaxic = syntax.Elements.Where(ele => ele is XshdRuleSet).Cast<XshdRuleSet>().FirstOrDefault();
-            foreach (var completionData in new VariableSeeker().GetResults(edit,s))
+            foreach (var completionData in new VariableSeeker().GetResults(edit, s))
             {
                 data.Add(completionData);
             }
-            foreach (var completionData in new KeywordSeeker().GetResults(s,syntaxic))
+            foreach (var completionData in new KeywordSeeker().GetResults(s, syntaxic))
             {
                 data.Add(completionData);
             }
@@ -94,6 +78,36 @@ namespace LeekIDE.Autocompletion
             complete.StartOffset -= off;
             complete.CompletionList.SelectedItem =
                 complete.CompletionList.CompletionData.FirstOrDefault();
+        }
+
+        public static char? AutoCompleteBrackets(TextEditor edit, char e)
+        {
+            switch (e)
+            {
+                case '{':
+                    edit.TextArea.PerformTextInput("}");
+                    edit.CaretOffset--;
+                    return '}';
+                case '(':
+                    edit.TextArea.PerformTextInput(")");
+                    edit.CaretOffset--;
+                    return ')';
+                case '"':
+                    if (InsertString)
+                    {
+                        InsertString = false;
+                    }
+                    else
+                    {
+                        InsertString = true;
+                        return null;
+                    }
+                    edit.TextArea.PerformTextInput("\"");
+                    edit.CaretOffset--;
+                    return '"';
+                default:
+                    return null;
+            }
         }
     }
 }

@@ -19,5 +19,10 @@ namespace LeekIDE.Autocompletion.Seekers
                    where codeSnippet.ShortenedCalling.StartsWith(word)
                    select new CodeSnippetCompletion(codeSnippet);
         }
+        // Test thingies
+        public void AddCodeSnippet(CodeSnippet snippet)
+        {
+            SnippetEditor.CodeSnippets.Add(snippet);
+        }
     }
 }
