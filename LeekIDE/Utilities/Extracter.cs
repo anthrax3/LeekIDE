@@ -32,6 +32,8 @@ namespace LeekIDE.Utilities
             //    else
             //        exit = true;
             //}
+            startString = startString.Replace("(", "\\(").Replace(")", "\\)");
+            endString = endString.Replace("(", "\\(").Replace(")", "\\)");
             var regex = new Regex($"(?<={startString}).*?(?={endString})", RegexOptions.Singleline).Matches(text);
             foreach (Match match in regex)
             {

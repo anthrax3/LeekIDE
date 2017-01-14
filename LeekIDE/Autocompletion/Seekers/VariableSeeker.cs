@@ -16,23 +16,7 @@ namespace LeekIDE.Autocompletion.Seekers
     {
         public IEnumerable<ICompletionData> GetResults(TextEditor editor,string word,XshdRuleSet ruleSet = null)
         {
-            var data = new List<ICompletionData>();
-            foreach (var str in Extracter.ExtractFromString(editor.Text, "var", ";"))
-            {
-                var trueString = "";
-                if (str.IndexOf("=", StringComparison.Ordinal) != -1)
-                {
-                    trueString = str.Substring(0, str.IndexOf("=", StringComparison.Ordinal)).Trim();
-                }
-                else
-                {
-                    trueString = str.Trim();
-                }
-
-                if (trueString.StartsWith(word))
-                    data.Add(new VariableCompletion(trueString));
-            }
-            return data;
+            return GetResults(editor.Text, word);
         }
 
         public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null)
@@ -50,8 +34,11 @@ namespace LeekIDE.Autocompletion.Seekers
                 {
                     trueString = str.Trim();
                 }
-
-                if (trueString.StartsWith(word))
+                if (Extracter.ExtractFromString(trueString, "in", ")").Any())
+                {
+                    trueString = null;
+                }
+                if (trueString?.StartsWith(word) ?? false)
                     data.Add(new VariableCompletion(trueString));
             }
             return data;
