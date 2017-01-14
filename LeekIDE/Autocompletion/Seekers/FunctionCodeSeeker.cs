@@ -17,8 +17,7 @@ namespace LeekIDE.Autocompletion.Seekers
         public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null,int offset = 0)
         {
             var funcs = Utilities.Extracter.ExtractFromString(code, "function", "{")
-                .Where(s => !s.StartsWith("("))
-                .Select(s => new FunctionCompletion(s.Trim().Trim('(',')')));
+                .Select(s => new FunctionCompletion(s.Trim()));
             foreach (var functionCompletion in funcs)
             {
                 if (functionCompletion.Text.StartsWith(word))
