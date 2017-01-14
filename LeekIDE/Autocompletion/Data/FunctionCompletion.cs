@@ -11,7 +11,7 @@ namespace LeekIDE.Autocompletion.Data
     {
         public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
         {
-            textArea.Document.Replace(completionSegment, this.Text + "()");
+            textArea.Document.Replace(completionSegment, this.Text);
             textArea.Caret.Offset--;
         }
 

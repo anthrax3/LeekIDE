@@ -65,29 +65,8 @@ namespace LeekIDE.Controls
             {
                 InsertString = true;
             }
-            var start = TextUtilities.GetNextCaretPosition(Document, CaretOffset,
-                                                           LogicalDirection.Backward, CaretPositioningMode.WordStart);
-
-            var end = 0;
-            if (start != -1)
-            {
-                end = CaretOffset;
-                var current = start;
-                while (current < end)
-                {
-                    if (current == -1)
-                        break;
-                    try
-                    {
-                        wordsChar.Add(Document.GetCharAt(current));
-                    }
-                    catch
-                    {
-                        break;
-                    }
-                    current++;
-                }
-            }
+            int start, end;
+            GetPreviousWord(wordsChar, out start, out end);
 
             //foreach (var x1 in edit.Document.GetLineByOffset(edit.CaretOffset))
             //{
@@ -99,7 +78,7 @@ namespace LeekIDE.Controls
             //}
             string s = new string(wordsChar.ToArray());
             var syntaxic = this.Xshd.Elements.Where(ele => ele is XshdRuleSet).Cast<XshdRuleSet>().FirstOrDefault();
-            foreach (var completionData in new VariableSeeker().GetResults(this, s))
+            foreach (var completionData in new VariableSeeker().GetResults(this, s,offset: CaretOffset))
             {
                 data.Add(completionData);
             }
@@ -133,8 +112,34 @@ namespace LeekIDE.Controls
             complete.StartOffset -= off;
             complete.CompletionList.SelectedItem =
                 complete.CompletionList.CompletionData.FirstOrDefault();
-        
-    }
+
+        }
+
+        private void GetPreviousWord(List<char> wordsChar, out int start, out int end)
+        {
+            start = TextUtilities.GetNextCaretPosition(Document, CaretOffset,
+                                                                       LogicalDirection.Backward, CaretPositioningMode.WordStart);
+            end = 0;
+            if (start != -1)
+            {
+                end = CaretOffset;
+                var current = start;
+                while (current < end)
+                {
+                    if (current == -1)
+                        break;
+                    try
+                    {
+                        wordsChar.Add(Document.GetCharAt(current));
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                    current++;
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -9,12 +9,12 @@ namespace LeekIDE.Autocompletion.Seekers
 {
     public class FunctionCodeSeeker : IGlobalCodeSeeker
     {
-        public IEnumerable<ICompletionData> GetResults(TextEditor editor, string word, XshdRuleSet ruleSet = null)
+        public IEnumerable<ICompletionData> GetResults(TextEditor editor, string word, XshdRuleSet ruleSet = null,int offset = 0)
         {
-            return GetResults(editor.Text, word);
+            return GetResults(editor.Text.Substring(0,editor.CaretOffset), word);
         }
 
-        public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null)
+        public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null,int offset = 0)
         {
             var funcs = Utilities.Extracter.ExtractFromString(code, "function", "{")
                 .Where(s => !s.StartsWith("("))
