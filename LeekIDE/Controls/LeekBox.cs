@@ -19,6 +19,7 @@ using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using JetBrains.Annotations;
 using LeekIDE.Autocompletion.Seekers;
 using Xceed.Wpf.Toolkit.Core.Converters;
+using LeekIDE.Utilities;
 
 namespace LeekIDE.Controls
 {
@@ -55,7 +56,6 @@ namespace LeekIDE.Controls
         {
             complete = new CompletionWindow(TextArea);
             IList<ICompletionData> data = complete.CompletionList.CompletionData;
-            List<char> wordsChar = new List<char>();
             if (InsertString || e.Text != "\"")
             {
                 InsertString = false;
@@ -65,9 +65,6 @@ namespace LeekIDE.Controls
             {
                 InsertString = true;
             }
-            int start, end;
-            GetPreviousWord(wordsChar, out start, out end);
-
             //foreach (var x1 in edit.Document.GetLineByOffset(edit.CaretOffset))
             //{
 
@@ -76,7 +73,7 @@ namespace LeekIDE.Controls
             //{
 
             //}
-            string s = new string(wordsChar.ToArray());
+            string s = Extracter.GetPreviousWord(Text, CaretOffset);
             var syntaxic = this.Xshd.Elements.Where(ele => ele is XshdRuleSet).Cast<XshdRuleSet>().FirstOrDefault();
             foreach (var completionData in new VariableSeeker().GetResults(this, s,offset: CaretOffset))
             {
@@ -96,7 +93,7 @@ namespace LeekIDE.Controls
             }
             data = data.OrderByDescending(c => c.Priority).ToList();
             if (!data.Any()) return;
-            var off = end - start;
+            var off = s.Length;
             if (off < 0)
             {
                 off = 0;
@@ -104,6 +101,8 @@ namespace LeekIDE.Controls
             try
             {
                 complete.Show();
+                complete.MinWidth = 130;
+                complete.Width = complete.CompletionList.CompletionData.Max(cd => cd.Text.Length * complete.FontSize);
             }
             catch (InvalidOperationException)
             {

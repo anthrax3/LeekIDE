@@ -3,16 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LeekIDE"
+        xmlns:local="clr-namespace:LeekIDE.Views"
         mc:Ignorable="d"
         Title="LeekIDE" Height="350" Width="525"
         MinHeight="250" MinWidth="200"
-        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:custom="clr-namespace:LeekIDE.Controls">
     <Window.Resources>
         <MenuItem x:Key="undoItem" Command="Undo"/>
         <MenuItem x:Key="redoItem" Command="Redo"/>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.SaveCommand}" Executed="CommandBinding_ExecutedAsync"/>
+        <CommandBinding Command="{x:Static local:MainWindow.OpenCommand}" Executed="CommandBinding_Executed_OpenAsync"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*" MaxHeight="22" MinHeight="20"/>
@@ -20,6 +23,10 @@
             <RowDefinition Height="269*"/>
         </Grid.RowDefinitions>
         <Menu BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="0,0,0,1">
+            <MenuItem Header="File">
+                <MenuItem Command="{x:Static local:MainWindow.SaveCommand}" Header="Save..." />
+                <MenuItem Command="{x:Static local:MainWindow.OpenCommand}" Header="Open..." />
+            </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem Header="Snippet editor" HorizontalAlignment="Left" Click="SnippetTriggered"/>
                 <Separator/>

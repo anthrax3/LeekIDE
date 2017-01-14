@@ -19,13 +19,14 @@ namespace LeekIDE.Autocompletion.Seekers
         /// <returns>An IEnumarable of completion data</returns>
         public IEnumerable<ICompletionData> GetResults(string word,[ItemNotNull] XshdRuleSet ruleSet = null)
         {
+            word = word.ToLower();
             if (ruleSet == null)
                 throw new NullReferenceException(); // In case the syntax is null
             // Else just continue :)
             var keywords = ruleSet.Elements.FirstOrDefault(e => e is XshdKeywords) as XshdKeywords;
             return from keyword
                 in keywords?.Words
-                where keyword.StartsWith(word)
+                where keyword.ToLower().StartsWith(word)
                 select new KeywordCompletion(keyword);
         }
     }

@@ -20,6 +20,7 @@ using LeekIDE.Autocompletion.Data;
 using LeekIDE.Autocompletion.Seekers;
 using LeekIDE.Properties;
 using Newtonsoft.Json;
+using Microsoft.Win32;
 
 namespace LeekIDE.Views
 {
@@ -38,15 +39,23 @@ namespace LeekIDE.Views
                 JsonSerializer.CreateDefault()
                     .Deserialize<ObservableCollection<CodeSnippet>>(
                         new JsonTextReader(new StringReader(Properties.Settings.Default.json)));
-            
-            InitializeComponent();                       
-        }
 
+            InitializeComponent();
+            boxie.Text = StartupText ?? "";
+        }
+        public static string StartupText { get; set; }
         private void MainWindow_Closed(object sender, EventArgs e)
         {
             Settings.Default.Save();
         }
-
+        public static RoutedCommand SaveCommand = new RoutedCommand
+        {
+            InputGestures = { new KeyGesture(Key.S, ModifierKeys.Control) }
+        };
+        public static RoutedCommand OpenCommand = new RoutedCommand
+        {
+            InputGestures = { new KeyGesture(Key.O, ModifierKeys.Control) }
+        };
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
@@ -69,22 +78,22 @@ namespace LeekIDE.Views
             MessageBox.Show($@"You broke me :'(
 Message : {(e.Exception).Message}
 Stack Trace:
-{(e.Exception).StackTrace}","Nooooo",MessageBoxButton.OK,MessageBoxImage.Error);
+{(e.Exception).StackTrace}", "Nooooo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var r = MessageBox.Show($@"You broke me :'(
-Message : {((Exception) e.ExceptionObject).Message}
+Message : {((Exception)e.ExceptionObject).Message}
 Stack Trace:
-{((Exception) e.ExceptionObject).StackTrace}","OH NO ;(",MessageBoxButton.OK,MessageBoxImage.Error);
+{((Exception)e.ExceptionObject).StackTrace}", "OH NO ;(", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-       
-        
+
+
         private XshdSyntaxDefinition Xshd { get; set; }
-        
-   
+
+
         private void SnippetTriggered(object sender, RoutedEventArgs e)
         {
             new SnippetEditor().ShowDialog();
@@ -98,6 +107,36 @@ Stack Trace:
         private void ChangeLogTriggered(object sender, RoutedEventArgs e)
         {
             new ChangeLog(true).ShowDialog();
+        }
+
+        private async void CommandBinding_ExecutedAsync(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog()
+            {
+                Filter = "LeekScript Files (*.leek)|*.leek|All files (*.*)|*.*"
+            };
+            if (dialog.ShowDialog() ?? false)
+            {
+                using (var w = new StreamWriter(dialog.OpenFile()))
+                {
+                    await w.WriteAsync(boxie.Text);
+                }
+            }
+        }
+
+        private async void CommandBinding_Executed_OpenAsync(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Filter = "LeekScript Files (*.leek)|*.leek|All files (*.*)|*.*"
+            };
+            if (dialog.ShowDialog() ?? false)
+            {
+                using (var r = new StreamReader(dialog.OpenFile()))
+                {
+                    boxie.Text = await r.ReadToEndAsync();
+                }
+            }
         }
     }
 }

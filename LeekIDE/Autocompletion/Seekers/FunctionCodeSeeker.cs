@@ -16,11 +16,12 @@ namespace LeekIDE.Autocompletion.Seekers
 
         public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null,int offset = 0)
         {
+            word = word.ToLower();
             var funcs = Utilities.Extracter.ExtractFromString(code, "function", "{")
                 .Select(s => new FunctionCompletion(s.Trim()));
             foreach (var functionCompletion in funcs)
             {
-                if (functionCompletion.Text.StartsWith(word))
+                if (functionCompletion.Text.ToLower().StartsWith(word))
                     yield return functionCompletion;                
             }
         }

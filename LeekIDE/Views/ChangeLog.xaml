@@ -28,6 +28,13 @@
                     </Style>
                 </FlowDocument.Resources>
                 <Paragraph>
+                    <Run Style="{StaticResource TitleRun}">Version 1.5 :</Run>
+                    <LineBreak/>
+                    - Added the File menu
+                    <LineBreak/>
+                    - Find out a brand new thing !
+                </Paragraph>
+                <Paragraph>
                     <Run Style="{StaticResource TitleRun}">Version 1.4.1.0 : </Run>
                     <LineBreak/>
                     - Fixed bug with function and added the parameters with it.

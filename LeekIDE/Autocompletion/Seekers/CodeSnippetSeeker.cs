@@ -14,9 +14,10 @@ namespace LeekIDE.Autocompletion.Seekers
     {
         public IEnumerable<ICompletionData> GetResults(string word, XshdRuleSet ruleSet = null)
         {
+            word = word.ToLower();
             return from codeSnippet 
                    in SnippetEditor.CodeSnippets
-                   where codeSnippet.ShortenedCalling.StartsWith(word)
+                   where codeSnippet.ShortenedCalling.ToLower().StartsWith(word)
                    select new CodeSnippetCompletion(codeSnippet);
         }
         // Test thingies
