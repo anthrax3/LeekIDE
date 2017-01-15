@@ -33,6 +33,7 @@
       <Word>true</Word>
       <Word>false</Word>
       <Word>for</Word>
+      <Word>global</Word>
       <!-- ... -->
     </Keywords>
     <Keywords fontWeight="bold" foreground="DarkBlue">

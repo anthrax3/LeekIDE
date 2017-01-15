@@ -23,22 +23,22 @@ namespace LeekIDE.Autocompletion.Seekers
         {
             var data = new List<ICompletionData>();
             word = word.ToLower();
-            foreach (var item in Extracter.ExtractFromStringTuple(code, "var[\\s]", "\\s"))
+            foreach (var item in TextUtils.ExtractFromStringTuple(code, "var[\\s]", "\\s|;"))
             {
                 var str = item.str.Trim();
                 if (str.StartsWith(word))
                 {
-                    var foreachMargin = Extracter.GetPreviousWord(code, item.index, 2).Contains("for") ? 1 : 0;
-                    if (Extracter.GetBracketLevel(code,item.index) + foreachMargin <= Extracter.GetBracketLevel(code,code.Length - 1))
+                    var foreachMargin = TextUtils.GetPreviousWord(code, item.index, 2).Contains("for") ? 1 : 0;
+                    if (TextUtils.GetBracketLevel(code,item.index) + foreachMargin <= TextUtils.GetBracketLevel(code,code.Length - 1))
                     data.Add(new VariableCompletion(str));
                 }
             }
-            foreach (var item in Extracter.ExtractFromStringTuple(code,"global[\\s]","\\s"))
+            foreach (var item in TextUtils.ExtractFromStringTuple(code,"global[\\s]","\\s|;"))
             {
                 var str = item.str.Trim();
                 if (str.StartsWith(word))
                 {
-                    if (Extracter.GetBracketLevel(code, item.index) <= Extracter.GetBracketLevel(code, code.Length - 1))
+                    if (TextUtils.GetBracketLevel(code, item.index) <= TextUtils.GetBracketLevel(code, code.Length - 1))
                         data.Add(new GlobalVariableCompletion(str));
                 }
             }

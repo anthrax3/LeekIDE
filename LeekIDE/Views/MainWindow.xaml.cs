@@ -21,6 +21,7 @@ using LeekIDE.Autocompletion.Seekers;
 using LeekIDE.Properties;
 using Newtonsoft.Json;
 using Microsoft.Win32;
+using LeekIDE.Controls;
 
 namespace LeekIDE.Views
 {
@@ -29,6 +30,14 @@ namespace LeekIDE.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private LeekBox GetCurrent()
+        {
+            return ((Tab.SelectedItem ?? Tab.Items[0]) as TabItem).Content as LeekBox;
+        }
+        private TabItem GetCurrentTab()
+        {
+            return (Tab.SelectedItem ?? Tab.Items[0]) as TabItem;
+        }
         public MainWindow()
         {
             Closed += MainWindow_Closed;
@@ -41,9 +50,14 @@ namespace LeekIDE.Views
                         new JsonTextReader(new StringReader(Properties.Settings.Default.json)));
 
             InitializeComponent();
-            boxie.Text = StartupText ?? "";
+            GetCurrent().Text = StartupText ?? "";
+            GetCurrentTab().Header = StartupFileName ?? "Unnamed.leek";
+            GetCurrent().FilePath = StartupFilePath;
         }
+        private bool CanClose => Tab.Items.Count > 1;
         public static string StartupText { get; set; }
+        public static string StartupFilePath { get; set; }
+        public static string StartupFileName { get; set; }
         private void MainWindow_Closed(object sender, EventArgs e)
         {
             Settings.Default.Save();
@@ -56,6 +70,18 @@ namespace LeekIDE.Views
         {
             InputGestures = { new KeyGesture(Key.O, ModifierKeys.Control) }
         };
+        public static RoutedCommand SaveAsCommand = new RoutedCommand
+        {
+            InputGestures = { new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Alt) }
+        };
+        public static RoutedCommand CloseTabCommand = new RoutedCommand
+        {
+            InputGestures = { new KeyGesture(Key.W, ModifierKeys.Control) }
+        };
+        public static RoutedCommand OpenTabCommand = new RoutedCommand
+        {
+            InputGestures = { new KeyGesture(Key.N, ModifierKeys.Control) }
+        };
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
@@ -63,7 +89,10 @@ namespace LeekIDE.Views
             {
                 await Dispatcher.InvokeAsync(() =>
                 {
-                    boxie.FontSize = i;
+                    foreach (var item in Tab.Items.Cast<TabItem>())
+                    {
+                        ((LeekBox)item.Content).FontSize = i;
+                    }
                 });
             };
             if (!Settings.Default.UpgradeNeeded) return;
@@ -111,32 +140,60 @@ Stack Trace:
 
         private async void CommandBinding_ExecutedAsync(object sender, ExecutedRoutedEventArgs e)
         {
-            var dialog = new SaveFileDialog()
-            {
-                Filter = "LeekScript Files (*.leek)|*.leek|All files (*.*)|*.*"
-            };
-            if (dialog.ShowDialog() ?? false)
-            {
-                using (var w = new StreamWriter(dialog.OpenFile()))
-                {
-                    await w.WriteAsync(boxie.Text);
-                }
-            }
+            GetCurrentTab().Header = await GetCurrent().SaveToFileAsync(false);
         }
 
         private async void CommandBinding_Executed_OpenAsync(object sender, ExecutedRoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog()
+            var dialog = new OpenFileDialog
             {
                 Filter = "LeekScript Files (*.leek)|*.leek|All files (*.*)|*.*"
             };
             if (dialog.ShowDialog() ?? false)
             {
-                using (var r = new StreamReader(dialog.OpenFile()))
+                var item = await LeekBox.CreateBoxFromFileAsync(dialog.FileName);
+                var index = Tab.Items.Add(new TabItem
                 {
-                    boxie.Text = await r.ReadToEndAsync();
-                }
+                    Header = dialog.SafeFileName,
+                    Content = item,
+                    Style = Resources["tab"] as Style
+                });
             }
+        }
+
+        private async void CommandBinding_SaveAsAsync(object sender, ExecutedRoutedEventArgs e)
+        {
+            GetCurrentTab().Header = await GetCurrent().SaveToFileAsync(true);
+        }
+
+        private void CommandBinding_ExecutedClose(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (CanClose)
+            {
+                Tab.Items.RemoveAt(Tab.SelectedIndex);
+            }
+        }
+
+        private void CommandBinding_ExecutedNewTab(object sender, ExecutedRoutedEventArgs e)
+        {
+            Tab.Items.Add(new TabItem
+            {
+                Content = new LeekBox(),
+                Header = "Unnamed" + Tab.Items.Count + ".leek",
+                Style = Resources["tab"] as Style
+            });
+        }
+
+        private void TabItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var tabItem = sender as TabItem;
+            var box = tabItem.Content as LeekBox;
+            var dialog = new InputPrompt("Please insert the new name for this tab (and only the tab) :")
+            {
+                Text = (sender as TabItem).Header as string
+            };
+            dialog.ShowDialog();
+            tabItem.Header = dialog.Text + ".leek";
         }
     }
 }

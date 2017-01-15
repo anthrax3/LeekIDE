@@ -8,8 +8,13 @@ using System.Windows.Documents;
 
 namespace LeekIDE.Utilities
 {
-    public static class Extracter
+    public static class TextUtils
     {
+        public static bool ShouldIBreak(string word)
+        {
+            return Regex.IsMatch(word, "\\s");
+        }
+
         public static IEnumerable<string> ExtractFromString(
     string text, string startString, string endString)
         {

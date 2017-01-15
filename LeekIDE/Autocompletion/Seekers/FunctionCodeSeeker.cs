@@ -16,8 +16,13 @@ namespace LeekIDE.Autocompletion.Seekers
 
         public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null,int offset = 0)
         {
+            if (System.Text.RegularExpressions.Regex.IsMatch(word, "\\s"))
+            {
+                yield break;
+            }
+
             word = word.ToLower();
-            var funcs = Utilities.Extracter.ExtractFromString(code, "function", "{")
+            var funcs = Utilities.TextUtils.ExtractFromString(code, "function", "{")
                 .Select(s => new FunctionCompletion(s.Trim()));
             foreach (var functionCompletion in funcs)
             {

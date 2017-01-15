@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Media.Imaging;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
@@ -6,14 +6,14 @@ using ICSharpCode.AvalonEdit.Editing;
 
 namespace LeekIDE.Autocompletion.Data
 {
-    public class VariableCompletion : ICompletionData
+    public class GlobalVariableCompletion : ICompletionData
     {
-        public VariableCompletion(string text)
+        public GlobalVariableCompletion(string text)
         {
             this.Text = text;
         }
         private BitmapImage CurrentBitmap { get; set; }
-        public System.Windows.Media.ImageSource Image => new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/variable.png"));
+        public System.Windows.Media.ImageSource Image => new BitmapImage(new Uri("pack://application:,,,/LeekIDE;component/Resources/global.png"));
         public string Text { get; private set; }
 
         // Use this property if you want to show a fancy UIElement in the list.
@@ -22,7 +22,7 @@ namespace LeekIDE.Autocompletion.Data
             get { return this.Text; }
         }
 
-        public object Description => $"{Text} variable";
+        public object Description => $"{Text} global ariable";
 
         public void Complete(TextArea textArea, ISegment completionSegment,
             EventArgs insertionRequestEventArgs)

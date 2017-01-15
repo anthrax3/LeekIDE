@@ -28,6 +28,21 @@
                     </Style>
                 </FlowDocument.Resources>
                 <Paragraph>
+                    <Run Style="{StaticResource TitleRun}">Version </Run>
+                    <Run Style="{StaticResource TitleRun}" Foreground="#FF30BB07" TextDecorations="Underline"> 2.0 </Run>
+                    <Run Style="{StaticResource TitleRun}" Text=":"/>
+                    <LineBreak/>
+                    - A brand new UI with tabs !
+                    <LineBreak/>
+                    - Better file management
+                    <LineBreak/>
+                    - Added global variables
+                    <LineBreak/>
+                    - Some bug fixes
+                    <LineBreak/>
+                    - Better variable detection
+                </Paragraph>
+                <Paragraph>
                     <Run Style="{StaticResource TitleRun}">Version 1.5 :</Run>
                     <LineBreak/>
                     - Added the File menu

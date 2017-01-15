@@ -41,7 +41,7 @@ namespace LeekIDE.Views
         {
             if (Settings.Default.FontSize != Context.FontSize)
             {
-                // FontChanged.Invoke(this,Context.FontSize);
+                FontChanged.Invoke(this,Context.FontSize);
                 Settings.Default.FontSize = Context.FontSize;
                 LeekBox.GlobalFontsize = Context.FontSize;
             }

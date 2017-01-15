@@ -11,10 +11,16 @@
     <Window.Resources>
         <MenuItem x:Key="undoItem" Command="Undo"/>
         <MenuItem x:Key="redoItem" Command="Redo"/>
+        <Style x:Key="tab" TargetType="TabItem">
+            <EventSetter Event="MouseDoubleClick" Handler="TabItem_MouseDoubleClick"/>
+        </Style>
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MainWindow.SaveCommand}" Executed="CommandBinding_ExecutedAsync"/>
         <CommandBinding Command="{x:Static local:MainWindow.OpenCommand}" Executed="CommandBinding_Executed_OpenAsync"/>
+        <CommandBinding Command="{x:Static local:MainWindow.SaveAsCommand}" Executed="CommandBinding_SaveAsAsync"/>
+        <CommandBinding Command="{x:Static local:MainWindow.CloseTabCommand}" Executed="CommandBinding_ExecutedClose"/>
+        <CommandBinding Command="{x:Static local:MainWindow.OpenTabCommand}" Executed="CommandBinding_ExecutedNewTab"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -26,6 +32,11 @@
             <MenuItem Header="File">
                 <MenuItem Command="{x:Static local:MainWindow.SaveCommand}" Header="Save..." />
                 <MenuItem Command="{x:Static local:MainWindow.OpenCommand}" Header="Open..." />
+                <MenuItem Command="{x:Static local:MainWindow.SaveAsCommand}" Header="Save As"/>
+            </MenuItem>
+            <MenuItem Header="Navigation">
+                <MenuItem Command="{x:Static local:MainWindow.OpenTabCommand}" Header="New tab"/>
+                <MenuItem Command="{x:Static local:MainWindow.CloseTabCommand}" Header="Close tab"/>
             </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem Header="Snippet editor" HorizontalAlignment="Left" Click="SnippetTriggered"/>
@@ -40,11 +51,10 @@
             <Label FontFamily="./Roboto/#Roboto" Content="LeekIDE" VerticalAlignment="Center" FontSize="20" Height="34" HorizontalAlignment="Center"/>
             <Border Background="WhiteSmoke" VerticalAlignment="Bottom" Height="1"/>
         </Grid>
-        <DockPanel Grid.Row="2">
-            <Grid DockPanel.Dock="Left" Background="#FFDAD5D5">
-                <Label Content="foo" MinWidth="75" Background="#FF474747" Foreground="White"/>
-            </Grid>
-            <custom:LeekBox x:Name="boxie"/>
-        </DockPanel>
+        <TabControl Grid.Row="2" Name="Tab">
+            <TabItem Header="Unnamed.leek" Style="{StaticResource tab}">
+                <custom:LeekBox/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -128,6 +128,7 @@
     <Compile Include="Autocompletion\CodeSnippet.cs" />
     <Compile Include="Autocompletion\Data\CodeSnippetCompletion.cs" />
     <Compile Include="Autocompletion\Data\FunctionCompletion.cs" />
+    <Compile Include="Autocompletion\Data\GlobalVariableCompletion.cs" />
     <Compile Include="Autocompletion\Data\KeywordCompletion.cs" />
     <Compile Include="Autocompletion\Seekers\CodeSnippetSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\FunctionCodeSeeker.cs" />
@@ -141,6 +142,9 @@
     <Compile Include="Views\ChangeLog.xaml.cs">
       <DependentUpon>ChangeLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InputPrompt.xaml.cs">
+      <DependentUpon>InputPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -149,6 +153,10 @@
     </Compile>
     <Compile Include="Autocompletion\Data\VariableCompletion.cs" />
     <Page Include="Views\ChangeLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InputPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

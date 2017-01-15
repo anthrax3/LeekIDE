@@ -20,6 +20,7 @@ using JetBrains.Annotations;
 using LeekIDE.Autocompletion.Seekers;
 using Xceed.Wpf.Toolkit.Core.Converters;
 using LeekIDE.Utilities;
+using Microsoft.Win32;
 
 namespace LeekIDE.Controls
 {
@@ -49,7 +50,64 @@ namespace LeekIDE.Controls
         }
 
         private XshdSyntaxDefinition Xshd { get; set; }
-
+        public string FilePath { get; set; }
+        public async static Task<LeekBox> CreateBoxFromFileAsync(string path)
+        {
+            var box = new LeekBox();
+            try
+            {
+                using (var r = new StreamReader(path))
+                {
+                    box.Text = await r.ReadToEndAsync();
+                    box.FilePath = path;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Couldn't open file.");
+            }
+            return box;
+        }
+        /// <summary>
+        /// Saaves the current content to the a file.
+        /// </summary>
+        /// <param name="saveAs"></param>
+        /// <returns>A task that you don't care</returns>
+        public async Task<string> SaveToFileAsync(bool saveAs = false)
+        {
+            if (FilePath == null || saveAs)
+            {
+                var dialog = new SaveFileDialog()
+                {
+                    Filter = "LeekScript Files (*.leek)|*.leek|All files (*.*)|*.*"                            
+                };
+                if (dialog.ShowDialog() ?? false)
+                {
+                    FilePath = dialog.FileName;
+                    using (var w = new StreamWriter(dialog.OpenFile()))
+                    {
+                        await w.WriteAsync(Text);
+                    }
+                    return dialog.SafeFileName;
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var w = new StreamWriter(FilePath))
+                    {
+                        await w.WriteAsync(Text);
+                    }
+                    return FilePath.Remove(0, FilePath.LastIndexOfAny(new[] { '\\', '/' }) + 1);
+                } catch
+                {
+                    FilePath = null;
+                    return await SaveToFileAsync(true);
+                }
+            }
+            return null;
+        }
         private CompletionWindow complete;
         private bool InsertString { get; set; } = true;
         private void TextArea_TextEntered(object sender, System.Windows.Input.TextCompositionEventArgs e)
@@ -73,23 +131,26 @@ namespace LeekIDE.Controls
             //{
 
             //}
-            string s = Extracter.GetPreviousWord(Text, CaretOffset);
+            string s = TextUtils.GetPreviousWord(Text, CaretOffset);
             var syntaxic = this.Xshd.Elements.Where(ele => ele is XshdRuleSet).Cast<XshdRuleSet>().FirstOrDefault();
-            foreach (var completionData in new VariableSeeker().GetResults(this, s,offset: CaretOffset))
+            if (!TextUtils.ShouldIBreak(s) || s == "")
             {
-                data.Add(completionData);
-            }
-            foreach (var completionData in new KeywordSeeker().GetResults(s, syntaxic))
-            {
-                data.Add(completionData);
-            }
-            foreach (var completionData in new CodeSnippetSeeker().GetResults(s))
-            {
-                data.Add(completionData);
-            }
-            foreach (var completionData in new FunctionCodeSeeker().GetResults(this, s))
-            {
-                data.Add(completionData);
+                foreach (var completionData in new VariableSeeker().GetResults(this, s, offset: CaretOffset))
+                {
+                    data.Add(completionData);
+                }
+                foreach (var completionData in new KeywordSeeker().GetResults(s, syntaxic))
+                {
+                    data.Add(completionData);
+                }
+                foreach (var completionData in new CodeSnippetSeeker().GetResults(s))
+                {
+                    data.Add(completionData);
+                }
+                foreach (var completionData in new FunctionCodeSeeker().GetResults(this, s))
+                {
+                    data.Add(completionData);
+                }
             }
             data = data.OrderByDescending(c => c.Priority).ToList();
             if (!data.Any()) return;
