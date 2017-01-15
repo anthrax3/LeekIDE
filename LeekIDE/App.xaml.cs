@@ -16,14 +16,26 @@ namespace LeekIDE
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            var args = Environment.GetCommandLineArgs();
-            if (args.Any() && (args.FirstOrDefault()?.EndsWith(".leek") ?? false))
+            var args = AppDomain.CurrentDomain.SetupInformation.ActivationArguments?.ActivationData?.Any() ?? false ? AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData[0] : null;
+            try
             {
-                using (var r = new StreamReader(args[0]))
-                {
-                    LeekIDE.Views.MainWindow.StartupText = r.ReadToEnd();
-                }
+                if (args != null)
+                    if (args.EndsWith(".leek"))
+                    {
+                        Uri uri = new Uri(args);
+                        args = uri.LocalPath;
+                        
+                        using (var r = new StreamReader(args))
+                        {
+                            LeekIDE.Views.MainWindow.StartupText = r.ReadToEnd();
+                        }
+                    }
+            }
+            catch
+            {
+                // wtf
             }
         }
+        
     }
 }
