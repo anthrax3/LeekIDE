@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.3.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -130,6 +130,7 @@
     <Compile Include="Autocompletion\Data\FunctionCompletion.cs" />
     <Compile Include="Autocompletion\Data\GlobalVariableCompletion.cs" />
     <Compile Include="Autocompletion\Data\KeywordCompletion.cs" />
+    <Compile Include="Autocompletion\Errors\ErroredLine.cs" />
     <Compile Include="Autocompletion\Seekers\CodeSnippetSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\FunctionCodeSeeker.cs" />
     <Compile Include="Autocompletion\Seekers\ICodeSeeker.cs" />

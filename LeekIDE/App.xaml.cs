@@ -31,7 +31,7 @@ namespace LeekIDE
                         {
                             LeekIDE.Views.MainWindow.StartupText = r.ReadToEnd();
                             Views.MainWindow.StartupFilePath = uri.LocalPath;
-                            Views.MainWindow.StartupFileName = uri.LocalPath.Split('\\').Last();
+                            Views.MainWindow.StartupFileName = uri.LocalPath.Split('\\').Last().Remove(0,1);
                         }
                     }
             }

@@ -17,6 +17,7 @@ namespace LeekIDE.Autocompletion.Seekers
         public IEnumerable<ICompletionData> GetResults(TextEditor editor, string word, XshdRuleSet ruleSet = null, int offset = 0)
         {
             return GetResults(editor.Text.Substring(0, editor.CaretOffset), word,offset: offset);
+            
         }
 
         public IEnumerable<ICompletionData> GetResults(string code, string word, XshdRuleSet ruleSet = null, int offset = 0)
